@@ -30,9 +30,8 @@ const filePath = path.join(__dirname,"files",fileName);
 if(command == "create"){
     fs.writeFile(filePath,"this is the first Text content",(err) => {
         if(err){
-            throw err;
-        }
-    });
+        throw err;
+    }});
 }
 
 else if(command == "read"){
@@ -42,7 +41,6 @@ else if(command == "read"){
         }
         console.log(data);
     })
-
 }
 
 else if (command  == "rename"){
