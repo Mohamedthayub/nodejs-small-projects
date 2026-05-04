@@ -8,7 +8,7 @@ function validateInput(command,file,newFile){
     if(!validCommands.includes(command)){
         return "invalid command";
     }
-
+    
     if(!file){
         return "you must enter the fileName";
     }

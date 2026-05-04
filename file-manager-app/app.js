@@ -3,6 +3,9 @@ const fs = require('fs');
 const isValid = require('./validations/validate.js');
 const command = process.argv[2];
 const fileName = process.argv[3];
+const newFileName = process.argv[4];
+// console.log(process.argv);
+// console.log()
 /*
 🔥 Mini Project 1: File Manager CLI
 
@@ -15,8 +18,7 @@ node app.js rename old.txt new.txt
 
 👉 This will make you strong fast.
 */
-
-const result = isValid(command,fileName)
+const result = isValid(command,fileName,newFileName);
 
 if(result !== ""){
     console.log(result);
@@ -31,6 +33,27 @@ if(command == "create"){
             throw err;
         }
     });
+}
+
+else if(command == "read"){
+    fs.readFile(filePath,{encoding:'utf-8'},(err,data) => {
+        if(err){
+            throw err;
+        }
+        console.log(data);
+    })
+
+}
+
+else if (command  == "rename"){
+    const newFilePath = path.join(__dirname , "files",newFileName);
+    try{
+        fs.renameSync(filePath, newFilePath);
+        console.log("File Rename Successfully");
+    }
+    catch(err){
+        console.log("Error renaming File:",err);
+    }
 }
 
 else if(command == "delete"){
