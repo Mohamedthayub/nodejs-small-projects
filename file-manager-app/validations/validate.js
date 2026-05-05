@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-function validateInput(command,file,newFile){
+function validateFile(command,file,newFile){
     const validCommands = ["create","read","delete","rename"];
     if(!command){
         return "you must enter the command";
@@ -38,4 +38,4 @@ function validateInput(command,file,newFile){
 
     return "";
 }
-module.exports = validateInput;
+module.exports = validateFile;

@@ -1,10 +1,20 @@
 const fs =  require('fs');
 const path = require('path');
+const isValid = require('./validations/validate.js');
 
-const filePath = path.join(__dirname,'notes.json');
 
 const command = process.argv[2]
 const value = process.argv[3]
+
+
+const {check,errorMessage} = isValid(value,command);
+
+if(!check && errorMessage != ""){
+    console.log(errorMessage);
+    process.exit();
+}
+const filePath = path.join(__dirname,'notes.json');
+
 
 const readNotes = () => {
     try{
@@ -45,8 +55,4 @@ else if (command === "delete"){
     const newNotes   = notes.filter((note) => note !== value);
     saveNotes(newNotes);
     console.log("Your Note deleted");
-}
-
-else{
-    console.log("Invalid command");
 }
