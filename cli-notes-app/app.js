@@ -3,8 +3,8 @@ const path = require('path');
 const isValid = require('./validations/validate.js');
 
 
-const command = process.argv[2]
-const value = process.argv[3]
+const command = process.argv[2];
+const value = process.argv[3];
 
 
 const {check,errorMessage} = isValid(value,command);
